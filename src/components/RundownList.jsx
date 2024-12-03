@@ -1,6 +1,6 @@
 import RundownItem from './RundownItem'
 
-export default function RundownList({ items, onDeleteItem, onEditItem }) {
+export default function RundownList({ items, onDeleteItem, onEditItem, isEditing }) {
   return (
     <div className="space-y-4">
       {items.map(item => (
@@ -9,6 +9,7 @@ export default function RundownList({ items, onDeleteItem, onEditItem }) {
           item={item} 
           onDelete={onDeleteItem} 
           onEdit={onEditItem} 
+          isEditing={isEditing}
         />
       ))}
     </div>

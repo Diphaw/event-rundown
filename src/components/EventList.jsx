@@ -1,22 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import EventForm from './EventForm'
 import EventItem from './EventItem'
 
 export default function EventList() {
   const [events, setEvents] = useState([])
 
+  useEffect(() => {
+    const savedEvents = localStorage.getItem('events')
+    if (savedEvents) {
+      setEvents(JSON.parse(savedEvents))
+    }
+  }, [])
+
+  const saveEvents = (updatedEvents) => {
+    setEvents(updatedEvents)
+    localStorage.setItem('events', JSON.stringify(updatedEvents))
+  }
+
   const addEvent = (event) => {
-    setEvents([...events, { ...event, id: Date.now(), rundownItems: [] }])
+    const updatedEvents = [...events, { ...event, id: Date.now(), rundownItems: [] }]
+    saveEvents(updatedEvents)
   }
 
   const deleteEvent = (id) => {
-    setEvents(events.filter(event => event.id !== id))
+    const updatedEvents = events.filter(event => event.id !== id)
+    saveEvents(updatedEvents)
   }
 
   const updateRundown = (eventId, newRundownItems) => {
-    setEvents(events.map(event => 
+    const updatedEvents = events.map(event => 
       event.id === eventId ? { ...event, rundownItems: newRundownItems } : event
-    ))
+    )
+    saveEvents(updatedEvents)
   }
 
   return (
