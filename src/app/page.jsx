@@ -10,7 +10,7 @@ export default function Home() {
           <h1 className="text-3xl md:text-4xl font-bold text-center text-teal-600">Event Rundown Creator</h1>
         </div>
       </header>
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-16 py-8">
         <EventList />
       </main>
     </div>
