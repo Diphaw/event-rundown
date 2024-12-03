@@ -48,7 +48,7 @@ export default function EventItem({ event, onDeleteEvent, onUpdateRundown }) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 transform">
       <div className="p-6 bg-gradient-to-r from-teal-500 to-cyan-600">
         <div className="flex justify-between items-center">
           <div>
